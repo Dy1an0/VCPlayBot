@@ -9,13 +9,12 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
     & ~ filters.edited
 )
 async def start_(client: Client, message: Message):
-    await message.reply_sticker("CAACAgUAAxkBAAIp9mBtwBBZGywWEmV-WC8gcMArjusuAAKMAgACTp1xV6m-mtC1YTfoHgQ")
+    await message.reply_sticker("CAACAgEAAxkBAAEKBAdgqk47FtOSrcu0ZJgELdC-lxEZgAACCQEAAkXMSUZLDfnTEFCHeh8E")
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name}!
-\nI can play music in your group's voice chat
-Maintained by @HEROGAMERS1 ❤
-\nTo add in your group contact us at @LaylaSupport.
-\nHit /help list of available commands.
+\nBen grubunuzda sesli müzik çalmak için @lynx_zero tarafından sevgiyle yaratıldım  ❤
+\nGrubunuza admin olarak ekleyin ve çalıştıramazsanız benimle iletişime geçin.
+\nKomutlar ve bilgi için /help komutunu kullanın.
  </b>""",
       
        
@@ -23,23 +22,18 @@ Maintained by @HEROGAMERS1 ❤
             [
                 [
                     InlineKeyboardButton(
-                        "🌍 Music World", url="https://t.me/GIRLS_AND_BOYS_CHATTING",
+                        "🌍 Grubumuz", url="https://t.me/koruyucularailesi",
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/LaylaSupport"
-                    ),
-                    InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/LaylaList"
-                    ),
-                    InlineKeyboardButton(
-                        "💾 Source code", url="https://github.com/QueenArzoo/VCPlayBot"
+                        "💬 Benimle iletişim", url="https://t.me/lynx_zero"
                     )
+                    
                 ],
                 [
                     InlineKeyboardButton(
-                        "➕ Add To Your Group ➕", url="https://t.me/VCPlayBot?startgroup=true"
+                        "➕ Grubunuza eklemek için ➕", url="https://t.me/seslimuzikbot?startgroup=true"
                     ) 
                 ]
             ]
@@ -53,12 +47,12 @@ Maintained by @HEROGAMERS1 ❤
 )
 async def start(client: Client, message: Message):
     await message.reply_text(
-        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        "💁🏻‍♂️ Bir YouTube videosu aramak ister misiniz?",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/LaylaList"
+                        "🔊 Grup", url="https://t.me/koruyucularailesi"
                     )
                 ],    
                 [    
@@ -81,32 +75,26 @@ async def start(client: Client, message: Message):
 async def help(client: Client, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name}!
-\n/play <song name> - play song you requested
-/dplay <song name> - play song you requested via deezer
-/splay <song name> - play song you requested via jio saavn
-/playlist - Show now playing list
-/current - Show now playing
-/song <song name> - download songs you want quickly
-/search <query> - search videos on youtube with details
-/deezer <song name> - download songs you want quickly via deezer
-/saavn <song name> - download songs you want quickly via saavn
-/video <song name> - download videos you want quickly
-\n*Admins only*
-/player - open music player settings panel
-/pause - pause song play
-/resume - resume song play
-/skip - play next song
-/end - stop music play
-/userbotjoin - invite assistant to your chat
-/admincache - Refresh admin list
+\n/play <song name> - istediğiniz şarkıyı çalır
+/dplay <song name> - deezer ile istediğin şarkıyı çalır
+/splay <song name> - jiosaavn ile istediğin şarkıyı çal
+/playlist - Şimdi çalınan listeyi gösterir
+/current - Şimdi çalınanı gösterir
+/song <song name> -hızlıca istediğiniz şarkıları indirir
+/search <query> -youtube'da ayrıntılı video arar
+/deezer <song name> -deezer ile istediğiniz şarkıları hızlıca indirin
+/saavn <song name> - saavn ile istediğiniz şarkıları hızlıca oynatır
+/video <song name> - hızlıca istediğiniz videoları indirin
+\n*Admin komutları*
+/player - müzik çalar ayarları panelini aç
+/pause - çalınan müziği durdurur
+/resume - durdurulan müziği devam ettirir
+/skip - müziği atlar
+/end - müzik çalmayı durdur
+/userbotjoin - asistanı sohbetinize davet eder(çalışmazsa asistanı manuel olarak ekleyin)
+/admincache - Yönetici listesini yenile
  </b>""",
         reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/LaylaList"
-                    )
-                ]
-            ]
+                       
         )
     )    

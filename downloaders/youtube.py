@@ -20,7 +20,7 @@ def download(url: str) -> str:
 
     if duration > DURATION_LIMIT:
         raise DurationLimitError(
-            f"❌ Sadece {DURATION_LIMIT} dakikaya kadar müziklere izin veriliyor ,bu müzik {duration} dakika"
+            f"❌ Sadece {DURATION_LIMIT} dakikaya kadar müziklere izin veriliyor ,seçtiğiniz müzik {duration} dakika"
         )
     try:
         ydl.download([url])

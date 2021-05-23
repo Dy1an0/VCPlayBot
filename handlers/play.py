@@ -106,9 +106,9 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     font = ImageFont.truetype("etc/font.otf", 32)
     draw.text((205, 550), f"Title: {title}", (51, 215, 255), font=font)
     draw.text(
-        (205, 590), f"Duration: {duration}", (255, 255, 255), font=font
+        (205, 590), f"Süre: {duration}", (255, 255, 255), font=font
     )
-    draw.text((205, 630), f"Views: {views}", (255, 255, 255), font=font)
+    draw.text((205, 630), f"Görüntüleme: {views}", (255, 255, 255), font=font)
     draw.text((205, 670),
         f"Added By: {requested_by}",
         (255, 255, 255),
@@ -122,7 +122,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
  
 
 @Client.on_message(
-    filters.command("playlist")
+    filters.command("Liste")
     & filters.group
     & ~ filters.edited
 )
@@ -130,19 +130,19 @@ async def playlist(client, message):
     global que
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text('Player is idle')
+        await message.reply_text('Oynatıcı boş')
     temp = []
     for t in queue:
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style='md')
-    msg = "**Now Playing** in {}".format(message.chat.title)
+    msg = "**Şimdi oynatılıyor**  {}".format(message.chat.title)
     msg += "\n- "+ now_playing
     msg += "\n- Req by "+by
     temp.pop(0)
     if temp:
         msg += '\n\n'
-        msg += '**Queue**'
+        msg += '**Sıralama**'
         for song in temp:
             name = song[0]
             usr = song[1].mention(style='md')
@@ -167,7 +167,7 @@ def updated_stats(chat, queue, vol=100):
     return stats
 
 def r_ply(type_):
-    if type_ == 'play':
+    if type_ == 'Oynat':
         ico = '▶'
     else:
         ico = '⏸'
@@ -666,7 +666,7 @@ async def deezer(client: Client, message_: Message):
         chat_id=message_.chat.id,
         reply_markup=keyboard,
         photo="final.png",
-        caption=f"Playing [{title}]({url}) Via Deezer"
+        caption=f"Deezerle oynatılıyor [{title}]({url}) "
     ) 
     os.remove("final.png")
 
@@ -678,7 +678,7 @@ async def deezer(client: Client, message_: Message):
 )
 async def jiosaavn(client: Client, message_: Message):
     global que
-    lel = await message_.reply("🔄 **Processing**")
+    lel = await message_.reply("🔄 **İşleniyor**")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
@@ -697,15 +697,15 @@ async def jiosaavn(client: Client, message_: Message):
                               invitelink = await client.export_chat_invite_link(chid)
                           except:
                               await lel.edit(
-                                  "<b>Add me as admin of yor group first</b>",
+                                  "<b>Önce beni grubunuzun yöneticisi olarak ekleyin</b>",
                               )
                               return
 
                           try:
                               await USER.join_chat(invitelink)
-                              await USER.send_message(message_.chat.id,"I joined this group for playing music in VC")
+                              await USER.send_message(message_.chat.id,"Bu gruba VC'de müzik çalmak için katıldım")
                               await lel.edit(
-                                  "<b>@VCPlayRobot helper userbot joined your chat</b>",
+                                  "<b>@SesliMusicRoBOt asistan sohbete bağlandı</b>",
                               )
 
                           except UserAlreadyParticipant:
@@ -713,8 +713,8 @@ async def jiosaavn(client: Client, message_: Message):
                           except Exception as e:
                               #print(e)
                               await lel.edit(
-                                  f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                                  "\n\nOr manually add @VCPlayRobot to your Group and try again</b>",
+                                  f"<b>🔴 Flood Wait Error 🔴 \nKullanıcı {user.first_name} userbot için yoğun isteklerden dolayı grubunuza katılamadı! Kullanıcının grupta yasaklanmadığından emin olun."
+                                  "\n\nVeya @SesliMusicRoBOt 'u Grubunuza manuel olarak ekleyin ve tekrar deneyin</b>",
                               )
                               pass
     try:
@@ -730,7 +730,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
+    await res.edit(f"jiosaavnda aranıyor 👀👀👀  `{query}` ")
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -744,7 +744,7 @@ async def jiosaavn(client: Client, message_: Message):
         sduration = int(r[0]["duration"])
     except Exception as e:
         await res.edit(
-            "Found Literally Nothing!, You Should Work On Your English."
+            "Kelimenin tam anlamıyla hiçbir şey bulunamadı! Türkçeniz Üzerinde Çalışmalısınız."
         )
         print(str(e))
         is_playing = False
@@ -757,12 +757,12 @@ async def jiosaavn(client: Client, message_: Message):
              ],                     
              [
                InlineKeyboardButton(
-                   text="Join Updates Channel",
-                   url='https://t.me/LaylaList')
+                   text="Grubumuza katılın",
+                   url='https://t.me/koruyucularailesi')
              ],
              [       
                InlineKeyboardButton(
-                   text="❌ Close",
+                   text="❌ Kapat",
                    callback_data='cls')
 
             ]                          
@@ -782,12 +782,12 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"✯𝗩𝗖𝗣𝗹𝗮𝘆✯=#️⃣ Queued at position {position}",
+            caption=f"✯𝗩𝗖𝗣𝗹𝗮𝘆✯=#️⃣ Sıradakı yeri {position}",
         
         )           
            
     else:
-        await res.edit_text("✯𝗩𝗖𝗣𝗹𝗮𝘆✯=▶️ Playing.....")
+        await res.edit_text("✯𝗩𝗖𝗣𝗹𝗮𝘆✯=▶️ Oynatılıyor.....")
         chat_id = message_.chat.id
         que[chat_id] = []
         qeue = que.get(message_.chat.id)
@@ -797,14 +797,14 @@ async def jiosaavn(client: Client, message_: Message):
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
         callsmusic.pytgcalls.join_group_call(message_.chat.id, file_path)
-    await res.edit("Generating Thumbnail.")
+    await res.edit("Küçük Resim Oluşturuluyor.")
     await generate_cover(requested_by, sname, ssingers, sduration, sthumb)
     await res.delete()
     m = await client.send_photo(
         chat_id=message_.chat.id,
         reply_markup=keyboard,
         photo="final.png",
-        caption=f"Playing {sname} Via Jiosaavn",
+        caption=f" jiosaavnda oynatılıyor{sname} ",
         
     )
     os.remove("final.png")
