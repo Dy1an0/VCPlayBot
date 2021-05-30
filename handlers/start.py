@@ -95,6 +95,9 @@ async def help(client: Client, message: Message):
 /admincache - Yönetici listesini yenile
  </b>""",
         reply_markup=InlineKeyboardMarkup(
-                       
-        )
-    )    
+            [
+                InlineKeyboardButton(
+                    "🔊 Grup", url="https://t.me/koruyucularailesi"
+                )
+            ], 
+         )   
