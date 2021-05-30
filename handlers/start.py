@@ -21,11 +21,10 @@ async def start_(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "🌍 Grubumuz", url="https://t.me/koruyucularailesi",
-                    )
-                ],
-                [
+                    InlineKeyboardButton
+                
+                    
+                ],               [
                     InlineKeyboardButton(
                         "💬 Benimle iletişim", url="https://t.me/lynx_zero"
                     )
@@ -52,15 +51,15 @@ async def start(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🔊 Grup", url="https://t.me/koruyucularailesi"
+                        "Bne", url="https://t.me/lynx_zero"
                     )
                 ],    
                 [    
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Evet", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "Hayır ❌", callback_data="close"
                     )
                 ]
             ]
