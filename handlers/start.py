@@ -21,10 +21,11 @@ async def start_(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton
-                
-                    
-                ],               [
+                    InlineKeyboardButton(
+                        "🆙 Update Channel ", url="t.me/MarsuBotLog"
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "💬 Benimle iletişim", url="https://t.me/lynx_zero"
                     )
@@ -99,4 +100,5 @@ async def help(client: Client, message: Message):
                     "🔊 Grup", url="https://t.me/koruyucularailesi"
                 )
             ] 
-         )   
+         )
+    )
