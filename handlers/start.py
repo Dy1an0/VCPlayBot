@@ -98,5 +98,5 @@ async def help(client: Client, message: Message):
                 InlineKeyboardButton(
                     "🔊 Grup", url="https://t.me/koruyucularailesi"
                 )
-            ], 
+            ] 
          )   
